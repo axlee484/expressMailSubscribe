@@ -12,7 +12,7 @@ const path=require("path");
 const bodyParser=require("body-parser");
 const app=express();
 const PORT=2403;
-const request=https.request(URLmailchimp,options)
+
 
 app.use(express.static(path.join(__dirname,"../public")));
 app.use(bodyParser.urlencoded({ extended:true }));
@@ -35,8 +35,17 @@ app.post("/",(req,res)=>{
         ]
     }
     data=JSON.stringify(data);
+    const request=https.request(URLmailchimp,options,function(response){
+        if(response.statusCode===200)
+        res.sendFile(path.join(__dirname,"../public/html/confirmed.html"))
+        else
+        res.sendFile(path.join(__dirname,"../public/html/failed.html"))
+    })
   
     request.write(data);
     request.end();
-    res.send("ok");
+})
+
+app.post("/failed",(req, res)=>{
+    res.redirect("/");
 })

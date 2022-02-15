@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
 
     <!-- Bootstrap core CSS -->
@@ -18,12 +17,17 @@
 
 <body>
     <div class="jumbotron">
-        <h1 class="display-4">Success</h1>
-        <p class="lead">You've successfully subscribed to our e-mailing list. Check back your emails</p>
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">Couldn't subscribe. Sorry for the inconvenience</p>
         <hr class="my-4">
-        <p>Thank you for using our services</p>
-
+        <p>Try again. If problem persists please contsct the developer at singhayush484h@gmail.com</p>
+        <form action="/failed" method="post">
+            <p class="lead">
+                <button type="submit" class="btn btn-primary btn-lg">Try again</button>
+            </p>
+        </form>
     </div>
+
 </body>
 
 </html>
