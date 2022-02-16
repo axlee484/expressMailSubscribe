@@ -17,8 +17,11 @@
 
 <body>
     <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">Couldn't subscribe. Sorry for the inconvenience</p>
+        <h1 class="display-4">Ouch!</h1>
+        <p class="lead">Couldn't subscribe. Sorry for the inconvenience<br>
+            The server response is: <%=code%>
+                <%=error%>
+        </p>
         <hr class="my-4">
         <p>Try again. If problem persists please contsct the developer at singhayush484h@gmail.com</p>
         <form action="/failed" method="post">

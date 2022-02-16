@@ -13,14 +13,16 @@ const bodyParser=require("body-parser");
 const app=express();
 const PORT=2403;
 
+app.set('view engine', 'ejs')
 
-app.use(express.static(path.join(__dirname,"../public")));
+
+app.use(express.static(path.join(__dirname,"public")));
 app.use(bodyParser.urlencoded({ extended:true }));
 
 app.listen(2403);
 
 app.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname,"../public/html/index.html"))
+    res.sendFile(path.join(__dirname,"public/html/index.html"))
 })
 
 app.post("/",(req,res)=>{
@@ -37,9 +39,9 @@ app.post("/",(req,res)=>{
     data=JSON.stringify(data);
     const request=https.request(URLmailchimp,options,function(response){
         if(response.statusCode===200)
-        res.sendFile(path.join(__dirname,"../public/html/confirmed.html"))
+        res.render('confirmed')
         else
-        res.sendFile(path.join(__dirname,"../public/html/failed.html"))
+        res.render('failed',{error:response.statusMessage,code:response.statusCode});
     })
   
     request.write(data);
